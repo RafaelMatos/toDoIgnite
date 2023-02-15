@@ -1,3 +1,11 @@
 .header{
   background: #0D0D0D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem 0;
+  height: 12.5rem;
+}
+.header img {
+  height: 3rem;
 }
