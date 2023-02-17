@@ -76,3 +76,9 @@
   /* opacity: 0.7; */
   background: var(--blue-300);
 }
+
+.newTask button:disabled {
+  background: var(--blue-100);
+  color: var(--gray-300);
+  cursor: not-allowed;
+}

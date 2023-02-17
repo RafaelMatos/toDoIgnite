@@ -23,12 +23,14 @@ export function App() {
       done: false,
     };
     setListTask([...listTask, newTask]);
+    setNewTaskText('');
   }
 
   return (
     <div>
       <Header />
       <NewTask
+        value={newTaskText}
         onChangeInput={handleNewTaskChange}
         onClickCreateTask={handleCreateNewTask}
       />
