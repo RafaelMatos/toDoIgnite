@@ -1,10 +1,6 @@
 import { Trash, Circle, CheckCircle } from "phosphor-react";
+import { TaskProps } from "../interfaces/TaskInterface";
 import styles from "./Task.module.css";
-
-interface TaskProps {
-  content: string;
-  done?: boolean;
-}
 
 export function Task({ content, done }: TaskProps) {
   return (
