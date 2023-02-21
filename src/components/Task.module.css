@@ -44,3 +44,16 @@ flex-grow: 0;
 .task .circle:hover{
   color: var(--blue-300);
 }
+.task button {
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--gray-300);
+  padding: 0.1rem 0.2rem;
+  transition: color 1s;
+}
+
+.task button:hover {
+  color: var(--red-300);
+  background: var(--gray-400);
+}

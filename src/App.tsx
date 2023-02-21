@@ -5,6 +5,7 @@ import { NewTask } from "./components/NewTask";
 import { Tasks } from "./components/Tasks";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Task } from "./interfaces/TaskInterface";
+import { v4 as uuid } from "uuid";
 
 export function App() {
   const [newTaskText, setNewTaskText] = useState("");
@@ -19,12 +20,18 @@ export function App() {
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
     const newTask: Task = {
+      taskId:uuid(),
       content: newTaskText,
       done: false,
     };
     setListTask([...listTask, newTask]);
     setNewTaskText('');
   }
+  function handleDeleteTask(taskId : string){
+    const listTasksWithoutDeleted = listTask.filter(task => task.taskId !== taskId)
+    setListTask(listTasksWithoutDeleted)
+  }
+
 
   return (
     <div>
@@ -34,7 +41,7 @@ export function App() {
         onChangeInput={handleNewTaskChange}
         onClickCreateTask={handleCreateNewTask}
       />
-      <Tasks listTasks={listTask} />
+      <Tasks listTasks={listTask} onDeleteTask={handleDeleteTask} />
     </div>
   );
 }
