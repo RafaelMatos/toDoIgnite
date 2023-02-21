@@ -2,7 +2,7 @@ import { TasksProps } from "../interfaces/TaskInterface";
 import { Task } from "./Task";
 import styles from "./Tasks.module.css";
 
-export function Tasks({ listTasks, onDeleteTask }: TasksProps) {
+export function Tasks({ listTasks, onDeleteTask, onCompleteTask }: TasksProps) {
   const tasksDone = listTasks.filter((task) => task.done === true);
   return (
     <div className={styles.tasks}>
@@ -29,6 +29,7 @@ export function Tasks({ listTasks, onDeleteTask }: TasksProps) {
             content={task.content}
             done={task.done}
             onDeleteTask={onDeleteTask}
+            onCompleteTask={onCompleteTask}
           />
         );
       })}

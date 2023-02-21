@@ -9,6 +9,7 @@ import { v4 as uuid } from "uuid";
 
 export function App() {
   const [newTaskText, setNewTaskText] = useState("");
+  const [taskCompleted, setTaskCompleted] = useState(false);
   const listTaskEmpty: Task[] = [];
   const [listTask, setListTask] = useState([...listTaskEmpty]);
 
@@ -22,7 +23,7 @@ export function App() {
     const newTask: Task = {
       taskId:uuid(),
       content: newTaskText,
-      done: false,
+      done: taskCompleted,
     };
     setListTask([...listTask, newTask]);
     setNewTaskText('');
@@ -30,6 +31,15 @@ export function App() {
   function handleDeleteTask(taskId : string){
     const listTasksWithoutDeleted = listTask.filter(task => task.taskId !== taskId)
     setListTask(listTasksWithoutDeleted)
+  }
+  function handleCompleTask(taskId : string){
+    const taskListWithCompletedTask = listTask.map(task =>{
+      if(task.taskId === taskId){
+        task.done = !task.done
+      }
+      return task
+    })
+    setListTask(taskListWithCompletedTask)
   }
 
 
@@ -41,7 +51,7 @@ export function App() {
         onChangeInput={handleNewTaskChange}
         onClickCreateTask={handleCreateNewTask}
       />
-      <Tasks listTasks={listTask} onDeleteTask={handleDeleteTask} />
+      <Tasks listTasks={listTask} onDeleteTask={handleDeleteTask} onCompleteTask={handleCompleTask} />
     </div>
   );
 }

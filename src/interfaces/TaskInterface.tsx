@@ -11,11 +11,13 @@ export interface TaskProps{
   content: string;
   done?: boolean;
   onDeleteTask : (taskId:string)=>void
+  onCompleteTask : (taskId:string)=>void
 }
 
 export interface TasksProps {
   listTasks : Task[]
   onDeleteTask : (taskId:string)=>void
+  onCompleteTask : (taskId:string)=>void
 }
 
 export interface NewTaskProps {
