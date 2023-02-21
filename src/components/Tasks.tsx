@@ -1,4 +1,5 @@
 import { TasksProps } from "../interfaces/TaskInterface";
+import { ClipboardText } from "phosphor-react";
 import { Task } from "./Task";
 import styles from "./Tasks.module.css";
 
@@ -21,18 +22,29 @@ export function Tasks({ listTasks, onDeleteTask, onCompleteTask }: TasksProps) {
           </p>
         </div>
       </div>
-      {listTasks.map((task) => {
-        return (
-          <Task
-            key={task.taskId}
-            taskId={task.taskId}
-            content={task.content}
-            done={task.done}
-            onDeleteTask={onDeleteTask}
-            onCompleteTask={onCompleteTask}
-          />
-        );
-      })}
+
+      {listTasks.length == 0 && (
+        <div className={styles.tasksEmpty}>
+          <ClipboardText size={60} />
+          <p>
+            <strong>Você ainda não tem tarefas cadastradas</strong>
+          </p>
+          <p>Crie tarefas e organize seus itens a fazer</p>
+        </div>
+      )}
+      {listTasks.length > 0 &&
+        listTasks.map((task) => {
+          return (
+            <Task
+              key={task.taskId}
+              taskId={task.taskId}
+              content={task.content}
+              done={task.done}
+              onDeleteTask={onDeleteTask}
+              onCompleteTask={onCompleteTask}
+            />
+          );
+        })}
     </div>
   );
 }
